@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=1024"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>npm dependencies 🤯</title>
+    <meta name="author" content="Francesco e Alex"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic"
+          rel="stylesheet"/>
+
+    <link href="impress.css" rel="stylesheet"/>
+
+    <link rel="shortcut icon" href="favicon.png"/>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+</head>
+
+<body class="impress-not-supported">
+
+<!--
+    For example this fallback message is only visible when there is `impress-not-supported` class on body.
+-->
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified
+        version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress">
+
+    <div class="step slide" data-x="-1000" data-y="-800">
+        <h1>intro a npm dipendenze</h1>
+        <ul>
+            <li>dependencies</li>
+            <li>dev dependencies</li>
+            <li>peer dependencies</li>
+        </ul>
+    </div>
+    <div class="step slide" data-x="0" data-y="-800">
+        <h1>demo/quiz</h1>
+        <ul>
+            <li>installi solo peer</li>
+            <li>la tua è più aggiornata</li>
+            <li>la tua è meno aggiornata</li>
+        </ul>
+    </div>
+
+    <div class="step slide" data-x="1000" data-y="-800">
+        <h1>quando fai npm install</h1>
+        <p>se la versione non va bene, se ne scarica una apposta e la mette come sotto node_modules, ma solo come
+            dependency!
+            dev non le caga
+            peer quando installi se non ce l’hai ti da un piccolo warning (solo se hai una versione diversa? occhio al
+            package lock)
+        </p>
+    </div>
+    <div class="step slide" data-x="-1000" data-y="0">
+        <h1>quando esegui</h1>
+        <p>usa la sua versione, se non c’è usa quella globale
+            webpack fa lo stesso, i.e. nel bundle hai più versioni della stessa libreria
+            webpack è furbo e le versioni uguali le leva:</p>
+        <ul>
+            <li>a</li>
+            <ul>
+                <li>bv1</li>
+            </ul>
+
+            <li>c</li>
+            <ul>
+                <li>bv2</li>
+            </ul>
+            <li>d</li>
+            <ul>
+                <li>
+                    bv2
+                </li>
+            </ul>
+        </ul>
+        nel bundle trovi bv1 e bv2
+
+    </div>
+    <div class="step slide" data-x="0" data-y="0" data-z="0">
+        <div class="big center">ma quindi funziona?</div>
+
+    </div>
+
+    <div class="step slide" data-x="0" data-y="0" data-rotate="180" data-z="-1000" data-scale=".1">
+        <p class="big">no</p>
+        <p>se ti passi in giro cose, sono cose di versioni diverse</p>
+        <p>instance of</p>
+        <p>variabili globali</p>
+        <p>semantic versioning ci fidiamo?</p>
+
+    </div>
+
+    <div class="step slide" data-x="-100" data-y="0" data-rotate="180" data-z="-1000" data-scale=".1">
+        <h1>quindi cosa faccio?</h1>
+        nel tuo progetto:
+        <ul>
+            <li>dependencies o dev non cambia, le installa entrambe (occhio a npm install --production)</li>
+            <li>tieni versioni aggiornate
+            </li>
+        </ul>
+            in una libreria esterna
+        <ul>
+        <li>usa peer dependencies (per librerie grosse condivise tra vari componenti, e.g. react, plugin, ...)</li>
+        <li>usa versioni generose (^1.2.3 := >=1.2.3 &amp2.0.0 ) https://github.com/npm/node-semver</li>
+        <li>in sviluppo o la metti come dev o la installi a mano ogni volta</li>
+        </ul>
+    </div>
+    <div class="step slide" data-x="-100" data-y="0" data-rotate="180" data-z="-2000" data-scale=".01">
+        <p class="big center">Grazie</p>
+    </div>
+
+</div>
+
+<!--
+    This is a UI plugin. You can read more about plugins in src/plugins/README.md.
+    For now, I'll just tell you that this adds some graphical controls to navigate the
+    presentation. In the CSS file you can style them as you want. We've put them bottom right.
+-->
+<div id="impress-toolbar"></div>
+
+
+<script>
+    if ("ontouchstart" in document.documentElement) {
+        document.querySelector(".hint").innerHTML = "<p>Swipe left or right to navigate</p>";
+    }
+</script>
+
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+
+</body>
+</html>
