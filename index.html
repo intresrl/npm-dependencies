@@ -24,122 +24,141 @@
 
 
 <div class="reveal">
-<div class="slides">
+    <div class="slides">
 
-    <section class="title-slide bam"><div>npm dependencies 🤯</div></section>
-    <section>
-        <h2>Dependency types</h2>
-        <ul>
-            <li>dependencies</li>
-            <li>dev dependencies</li>
-            <li>peer dependencies</li>
-        </ul>
-    </section>
-    <section>
-        <section class="title-slide bam"><h1>demo/quiz</h1></section>
-        <section class="title-slide bam"><img src="images/dependency-graph.svg" style="width:100%;" /></section>
-        <section class="title-slide bam"><div>1. Only peer installed</div></section>
-        <section class="title-slide bam"><div>2. Yours more recent</div></section>
-        <section class="title-slide bam"><div>3. Your less recent</div></section>
-        <section><img src="images/npm-publishes.png" /></section>
-    </section>
-
-    <section class="title-slide bam slide">
-        <h2>On npm install</h2>
-        <ul>
-            <li><b>dependencies</b>: if version not ok, download ok version and put under dependency node_modules</li>
-            <li><b>devDependencies</b>: nothing</li>
-            <li><b>peerDependencies</b>: if version not ok, gives a little warning (mind package lock)</li>
-        </ul>
-    </section>
-    <section class="title-slide bam slide">
-      <section>
-        <h2>On execution</h2>
-        <p>close to source version has precedence over dependency version</p>
-<pre><code>a.v1
-b
- - a.v2
-</pre></code>
-            </p><i>b code will use a-v2</i></p>
-      </section>
-      <section>
-        <h2>Webpack</h2>
-            <p> does the same...</p>
-            <p>i.e. bundle contains multiple versions of the same library</p>
+        <section class="title-slide">
+            <div>npm dependencies</div>
+            <h1>🤯</h1>
         </section>
         <section>
-          <h2>Webpack</h2>
-              <p>... in a smart way: removes same versions</p>
-<pre><code>a
+            <h2>Dependency types</h2>
+            <ul>
+                <li>dependencies</li>
+                <li>dev dependencies</li>
+                <li>peer dependencies</li>
+            </ul>
+        </section>
+        <section>
+            <section class="title-slide bam"><h1>Demo / Quiz</h1></section>
+            <section class="title-slide bam"><img src="images/dependency-graph.svg" style="width:100%;"/></section>
+            <section class="title-slide bam">
+                <div>1. Only peer installed</div>
+            </section>
+            <section class="title-slide bam">
+                <div>2. Yours more recent</div>
+            </section>
+            <section class="title-slide bam">
+                <div>3. Your less recent</div>
+            </section>
+            <section><img src="images/npm-publishes.png"/></section>
+        </section>
+
+        <section class="title-slide bam slide">
+            <h2>On npm install</h2>
+            <ul>
+                <li><b>dependencies</b>: If <i>compatible</i> version is present: does nothing. If not, gets required
+                    version and puts it under its node_modules
+                </li>
+                <li><b>devDependencies</b>: nothing</li>
+                <li><b>peerDependencies</b>: if version not ok, gives a warning (mind package lock)</li>
+            </ul>
+        </section>
+        <section class="title-slide bam slide">
+            <section>
+                <h2>On execution</h2>
+                <p>Close to source version has precedence over global version</p>
+                <pre><code>a.v1
+b
+ - a.v2
+</code></pre>
+                </p><i>b code will use a-v2</i></p>
+            </section>
+            <section>
+                <h2>Webpack</h2>
+                <p>Does the same...</p>
+                <p>i.e. bundle contains multiple versions of the same library</p>
+            </section>
+            <section>
+                <h2>Webpack</h2>
+                <p>... in a smart way: removes same versions</p>
+                <pre><code>a
  - b.v1
 c
  - b.v2
 d
  - b.v2
-</pre></code>
-        <p><i>bundle contains b.v1 and b.v2</i></p>
+</code></pre>
+                <p><i>bundle contains b.v1 and b.v2</i></p>
 
-</section>
-    </section>
-    <section class="title-slide bam slide">
-        <div>So everything works?</div>
+            </section>
+        </section>
+        <section class="title-slide bam slide">
+            <h2>So everything works?</h2>
 
-    </section>
+        </section>
 
-    <section class="title-slide bam">
-        <h1>no</h1>
-<ul>
-        <li>objects passed around could be of different kind</li>
-        <li>instance of</li>
-        <li>global variables or properties</li>
-        <li>all relies on semantic versioning</li>
-</ul>
-    </section>
+        <section class="title-slide bam">
+            <h1>no</h1>
+            <ul>
+                <li>objects passed around could be of different kind</li>
+                <li>instance of</li>
+                <li>global variables or properties</li>
+                <li>all relies on semantic versioning</li>
+            </ul>
+        </section>
 
-    <section class="title-slide bam slide"> <h2>So what?</h2></section>
-    <section>
-        <h2>In your project</h2>
-        <ul>
-            <li>dependencies or devDependencies are the same: both are installed with npm install (careful with npm install --production)</li>
-            <li>keep your dependencies up to date</li>
-        </ul>
-    </section>
-    <section> 
-        <h2>In your library</h2>
-        <ul>
-        <li>use peer dependencies (for big libraries shared among components, e.g. react, plugin, ...)</li>
-        <li>use version ranges (^1.2.3 := >=1.2.3 & <2.0.0 )</li>
-        <li>while developing install peer dependency by hand or add it to devDependencies</li>
-        </ul>
-    </section>
-    </section>
-    <section class="title-slide bam slide" data-x="-100" data-y="0" data-rotate="180" data-z="-2000" data-scale=".01">
-        <p class="big center">Thanks</p>
-<p><a href="https://github.com/npm/node-semver">https://github.com/npm/node-semver</a></p>
-<p><a href="https://github.com/depsir">https://github.com/depsir</a></p>
-    </section>
+        <section class="title-slide bam slide"><h2>So what?</h2></section>
+        <section>
+            <h2>In your project</h2>
+            <ul>
+                <li>dependencies or devDependencies are the same: both are installed with npm install (careful with npm
+                    install --production)
+                </li>
+                <li>keep your dependencies up to date</li>
+            </ul>
+        </section>
+        <section>
+            <h2>In your library</h2>
+            <ul>
+                <li>use peer dependencies (for big libraries shared among components, e.g. react, plugin, ...)</li>
+                <li>use version ranges (^1.2.3 := >=1.2.3 & <2.0.0 )</li>
+                <li>while developing install peer dependency by hand or add it to devDependencies</li>
+            </ul>
+        </section>
+        </section>
+        <section class="title-slide bam slide" data-x="-100" data-y="0" data-rotate="180" data-z="-2000"
+                 data-scale=".01">
+            <p class="big center">Thanks</p>
+            <p><a href="https://github.com/npm/node-semver">https://github.com/npm/node-semver</a></p>
+            <p><a href="https://github.com/depsir">https://github.com/depsir</a></p>
+        </section>
 
+    </div>
 </div>
-</div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/headjs/1.0.3/head.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/js/reveal.js"></script>
-        <script>
-            Reveal.initialize(
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headjs/1.0.3/head.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/js/reveal.js"></script>
+<script>
+    Reveal.initialize(
+        {
+            controlsTutorial: false,
+            transition: 'none',
+            backgroundTransition: 'none',
+            dependencies: [
+                // {src:'../reveal-footer/footer.js', async:true},
+                {src: 'https://cdn.jsdelivr.net/gh/depsir/reveal-footer@0.0.2/footer.js', async: true},
                 {
-                    controlsTutorial: false,
-                    transition: 'none',
-                    backgroundTransition: 'none',
-                    dependencies: [
-                    	// {src:'../reveal-footer/footer.js', async:true},
-                    	{src:'https://cdn.jsdelivr.net/gh/depsir/reveal-footer@0.0.2/footer.js', async:true},
-            			{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/plugin/highlight/highlight.min.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-                    	],
-                    footer:'npm dependencies - i3 camp',
-                    history: true,
-                    slideNumber: 'h/v'
-            });
-        </script>
-
+                    src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/plugin/highlight/highlight.min.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                },
+            ],
+            footer: 'npm dependencies - i3 camp',
+            history: true,
+            slideNumber: 'h/v'
+        });
+</script>
 
 
 </body>
