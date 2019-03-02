@@ -25,7 +25,7 @@
     display:none;
 }
 .reveal .title-slide:not(.bam) .foot {
-    background-image:url("../images/intrelogo.png");
+    background-image:url("./images/intrelogo.png");
     color:white;
 }
 .reveal pre {

@@ -32,11 +32,18 @@
         </section>
         <section>
             <h2>Dependency types</h2>
-            <ul>
-                <li>dependencies</li>
-                <li>dev dependencies</li>
-                <li>peer dependencies</li>
-            </ul>
+           <pre><code>{ 
+    "dependencies": { 
+        "foo" : "1.0.0 - 2.9999.9999" 
+    },
+    "devDependencies": {
+        "coffee-script": "~1.6.3"
+    },
+    "peerDependencies": {
+        "tea": "2.x"
+    }
+}
+            </code></pre>
         </section>
         <section>
             <section class="title-slide bam"><h1>Demo / Quiz</h1></section>
@@ -94,17 +101,22 @@ d
         </section>
         <section class="title-slide bam slide">
             <h2>So everything works?</h2>
-
         </section>
 
-        <section class="title-slide bam">
-            <h1>no</h1>
-            <ul>
-                <li>objects passed around could be of different kind</li>
-                <li>instance of</li>
-                <li>global variables or properties</li>
-                <li>all relies on semantic versioning</li>
-            </ul>
+        <section>
+            <section class="title-slide bam">
+                <h1 style="text-align:center;">no</h1>
+                <ul>
+                    <li>objects passed around could be of different kind</li>
+                    <li>instance of</li>
+                    <li>global variables or properties</li>
+                    <li>all relies on semantic versioning</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Semantic versioning</h2>
+                <img src="images/Elephant-on-ball.jpg" />
+            </section>
         </section>
 
         <section class="title-slide bam slide"><h2>So what?</h2></section>
@@ -118,13 +130,19 @@ d
             </ul>
         </section>
         <section>
-            <h2>In your library</h2>
-            <ul>
-                <li>use peer dependencies (for big libraries shared among components, e.g. react, plugin, ...)</li>
-                <li>use version ranges (^1.2.3 := >=1.2.3 & <2.0.0 )</li>
-                <li>while developing install peer dependency by hand or add it to devDependencies</li>
-            </ul>
-        </section>
+            <section>
+                <h2>In your library</h2>
+                <ul>
+                    <li>use peer dependencies (for big libraries shared among components, e.g. react, plugin, ...)</li>
+                    <li>use version ranges (^1.2.3 := >=1.2.3 & <2.0.0 )</li>
+                    <li>while developing install peer dependency by hand or add it to devDependencies</li>
+                    <li>use semantic versioning!</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Semantic versioning</h2>
+                <img src="images/Elephant-on-ball.jpg" />
+            </section>
         </section>
         <section class="title-slide bam slide" data-x="-100" data-y="0" data-rotate="180" data-z="-2000"
                  data-scale=".01">
